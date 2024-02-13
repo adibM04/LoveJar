@@ -1,0 +1,175 @@
+/* styles.css */
+
+$clr: darken(#339545, 10%);
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #688ACC;
+    overflow: hidden;
+}
+
+#loveJar {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3; /* Ensure loveJar is on top of other elements */
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: #ff69b4;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #ff4499;
+}
+
+#messageDisplay {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.sun {
+    height: 300vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    background: radial-gradient(ellipse at center, #DBB800 0%, #688ACC 20%);
+    animation: sunrise 10s forwards;
+}
+
+@keyframes sunrise {
+    0% { transform: translate(0%, 0%); }
+    100% { transform: translate(0%, -55%); }
+}
+
+.ground {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background-color: #8db360;
+    z-index: 2;
+    overflow: hidden;
+}
+
+/* ... (rest of the CSS remains the same) ... */
+
+
+.grass {
+    width: 100vmin;
+    height: 100vmin;
+    position: absolute;
+    overflow: hidden;
+    transform: translate(-50%, 0%) translate3d(0, 0, 0);
+    bottom: 0;
+}
+
+.grass__blade {
+    position: absolute;
+
+    &--1 {
+        border-right: 3vmin solid $clr;
+        border-top-right-radius: 50%;
+        height: 160%;
+        width: 100%;
+        bottom: -100%;
+        left: -50%;
+        animation: move-blade-1 10s infinite;
+    }
+
+    @keyframes move-blade-1 {
+        0%, 30%, 50%, 55%, 82%, 97%, 100%{border-top-right-radius: 50%;}
+        20%{border-top-right-radius: 30%;}
+        40%{border-top-right-radius: 20%;}
+        70%{border-top-right-radius: 25%;}
+        90%{border-top-right-radius: 35%;}
+    }
+
+    &--2 {
+        border-right: 3vmin solid $clr;
+        border-top-right-radius: 20%;
+        height: 300%;
+        width: 200%;
+        bottom: -230%;
+        left: -150%;
+        animation: move-blade-2 10s infinite;
+    }
+
+    @keyframes move-blade-2 {
+        0%, 30%, 50%, 55%, 82%, 97%, 100% {border-top-right-radius: 20%;}
+        20%{border-top-right-radius: 15%;}
+        40%{border-top-right-radius: 10%;}
+        70%{border-top-right-radius: 10.5%;}
+        90%{border-top-right-radius: 12.5%;}
+    }
+
+    &--3 {
+        border-top-left-radius: 15%;
+        border-left: 3vmin solid $clr;
+        height: 360%;
+        width: 200%;
+        bottom: -300%;
+        left: 50%;
+        animation: move-blade-3 10s infinite;
+    }
+
+    @keyframes move-blade-3 {
+        0%, 30%, 50%, 55%, 82%, 97%, 100%{border-top-left-radius: 15%;}
+        20%{border-top-left-radius: 22%;}
+        40%{border-top-left-radius: 17.5%;}
+        70%{border-top-left-radius: 18.5%;}
+        90%{border-top-left-radius: 21%;}
+    }
+}
+
+/* Heart animation */
+#heartsContainer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.heart {
+    position: absolute;
+    color: #ff69b4; /* Pink color */
+    opacity: 0.8;
+    font-size: 24px;
+    animation: float 5s infinite linear alternate, rotate 10s infinite linear;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-50px);
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
